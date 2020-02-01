@@ -7,7 +7,13 @@
 }
 
 .grid-item {
-  background-color:black;
+  background-color: black;
   color: #fff;
+  text-align: center;
+}
+
+.hovered {
+  background-color: #fff;
+  color: black;
   text-align: center;
 }
