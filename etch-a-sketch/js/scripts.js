@@ -1,9 +1,9 @@
 const container = document.querySelector('.container');
-const nSquares = 16;
+const nSquares = 24;
 
 // render the square grid
-//container.style['grid-template-columns'] = `repeat({nSquares}, 1fr)`;
-//container.style['grid-template-rows'] = `repeat({nSquares}, auto)`;
+container.style['grid-template-columns'] = `repeat(${nSquares}, 1fr)`;
+container.style['grid-template-rows'] = `repeat(${nSquares}, auto)`;
 
 console.log(container.style.cssText);
 
