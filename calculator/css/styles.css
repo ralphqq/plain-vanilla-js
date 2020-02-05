@@ -18,5 +18,22 @@
 }
 
 .control-panel-area {
-  border: 3px solid black;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+
+#control-clear {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+#control-back {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+
+btn {
+  text-align: center;
+  width: 100%;
 }
