@@ -1,1 +1,21 @@
-/* Styles */
+.container {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 15% 35% 50%;
+  grid-row-gap: 10px;
+  height: 20vw;
+  width: 32vw;
+  border: 5px double black;
+}
+
+.sub-results-area {
+  border: 3px solid black;
+}
+
+.main-display-area {
+  border: 3px solid black;
+}
+
+.control-panel-area {
+  border: 3px solid black;
+}
