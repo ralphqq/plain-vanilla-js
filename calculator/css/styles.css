@@ -1,11 +1,12 @@
 .container {
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 15% 35% 50%;
+  grid-template-rows: 10% 30% 60%;
   grid-row-gap: 10px;
-  height: 20vw;
-  width: 32vw;
+  height: 44vw;
+  width: 20vw;
   border: 5px double black;
+  padding: 15px 15px 15px 15px;
 }
 
 .sub-results-area {
