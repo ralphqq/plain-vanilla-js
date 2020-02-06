@@ -1,5 +1,6 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
+  /*font-size: 16pt;*/
 }
 
 .container {
@@ -19,6 +20,11 @@ body {
 
 .main-display-area {
   border: 3px solid black;
+  text-align: right;
+}
+
+#display-area {
+  font-size: 2em;
 }
 
 .control-panel-area {
@@ -40,10 +46,12 @@ body {
 btn {
   text-align: center;
   width: 100%;
+}
+
+.btn-main {
   font-size: 1.5em;
 }
 
-
 .btn-edit {
-  font-size: .75em;
+  font-size: 0.8em;
 }
