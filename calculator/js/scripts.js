@@ -10,18 +10,19 @@ function setButtons(inputButtons) {
     if (btn.classList.contains('btn-digits')) {
       // Events for numeric buttons
       btn.addEventListener('click', e => {
-        appendDigit(btn);
+        let btnPressed = btn.getAttribute('value');
+        appendDigit(btnPressed);
       });
     } else if (btn.classList.contains('btn-edit')) {
       btn.addEventListener('click', e => {
-        editDisplayedResult(btn);
+        let btnId = btn.getAttribute('id');
+        editDisplayedResult(btnId);
       });
     }
   });
 }
 
-function appendDigit(btnPressed) {
-  let btnValue = btnPressed.getAttribute('value');
+function appendDigit(btnValue) {
   let currentDisplayedResult = document.querySelector('#display-area').textContent;
   if (currentDisplayedResult === '0') { // When displayed value is exactly 0
     if (btnValue !== '0') {
@@ -49,8 +50,7 @@ function updateDisplayedResult(resultToDisplay) {
   displayArea.textContent = resultToDisplay;
 }
 
-function editDisplayedResult(btn) {
-  let btnId = btn.getAttribute('id');
+function editDisplayedResult(btnId) {
   let currentDisplayedResult = document.querySelector('#display-area').textContent;
   let nDigits = currentDisplayedResult.length;
   if (btnId === 'btn-back') {   // backspace
