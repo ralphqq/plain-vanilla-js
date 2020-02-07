@@ -1,3 +1,4 @@
+const MAX_DIGITS = 15;
 const inputBtns = document.querySelectorAll('button');
 let mainDisplayedResult = '0';
 let subDisplayedResult = mainDisplayedResult;
@@ -24,6 +25,11 @@ function setButtons(inputButtons) {
 
 function appendDigit(btnValue) {
   let currentDisplayedResult = document.querySelector('#display-area').textContent;
+  if (currentDisplayedResult.replace('.', '').length >= MAX_DIGITS) {
+    // MAX_DIGITS has been reached, do not append additional digits
+    return;
+  }
+
   if (currentDisplayedResult === '0') { // When displayed value is exactly 0
     if (btnValue !== '0') {
       // only nonzero digits or . is processed
