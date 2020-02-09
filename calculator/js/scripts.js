@@ -2,6 +2,31 @@ const MAX_DIGITS = 15;
 const inputBtns = document.querySelectorAll('button');
 let mainDisplayedResult = '0';
 let subDisplayedResult = mainDisplayedResult;
+let currentOperation = {
+  operand1: null,
+  operand2: null,
+  operator: null,
+  result: null,
+  evaluate: function() {
+    switch(this.operator) {
+      case 'plus':
+        this.result = this.operand1 + this.operand2;
+        break;
+      case'minus':
+        this.result = this.operand1 - this.operand2;
+        break;
+      case 'multiply':
+        this.result = this.operand1 * this.operand2;
+        break;
+      case 'divide':
+        if (this.operand2 != 0) {
+          this.result = this.operand1 / this.operand2;
+        }
+        break;
+    }
+  },
+};
+
 updateDisplayedResult(mainDisplayedResult);
 setButtons(inputBtns);
 
@@ -18,6 +43,26 @@ function setButtons(inputButtons) {
       btn.addEventListener('click', e => {
         let btnId = btn.getAttribute('id');
         editDisplayedResult(btnId);
+      });
+    } else if (btn.classList.contains('btn-ops')) {
+      btn.addEventListener('click', e => {
+        let btnId = btn.getAttribute('id');
+        let newDisplay = '';
+        if (btnId !== 'btn-equals') {
+          // Every time user presses operator except =
+          // update currentOperation object:
+          let operand1 = document.querySelector('#display-area').textContent;
+          currentOperation['operand1'] = parseFloat(operand1);
+          currentOperation['operator'] = btnId.split('-')[1];
+          newDisplay = 0;
+        } else {
+          // User presses = button
+          let operand2 = document.querySelector('#display-area').textContent;
+          currentOperation['operand2'] = parseFloat(operand2);
+          currentOperation.evaluate();
+          newDisplay = currentOperation['result'];
+        }
+        updateDisplayedResult(newDisplay);
       });
     }
   });
@@ -43,7 +88,7 @@ function appendDigit(btnValue) {
     }
   } else {
     // append characters to current displayed value
-    if (btnValue !== '.' || currentDisplayedResult('.') == -1) {
+    if (btnValue !== '.' || currentDisplayedResult.search('.') == -1) {
       // but do not append dot if it is already present in displayed value
       currentDisplayedResult += btnValue;
     }
@@ -74,4 +119,8 @@ function editDisplayedResult(btnId) {
     subDisplayedResult = 0;
   }
   updateDisplayedResult(currentDisplayedResult);
+}
+
+function evaluateOperation(currentOps) {
+  
 }
