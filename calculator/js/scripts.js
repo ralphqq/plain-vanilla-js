@@ -88,7 +88,7 @@ function appendDigit(btnValue) {
     }
   } else {
     // append characters to current displayed value
-    if (btnValue !== '.' || currentDisplayedResult.search('.') == -1) {
+    if (btnValue !== '.' || currentDisplayedResult.indexOf('.') == -1) {
       // but do not append dot if it is already present in displayed value
       currentDisplayedResult += btnValue;
     }
