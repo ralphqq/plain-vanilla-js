@@ -51,14 +51,14 @@ function setButtons(inputButtons) {
         if (btnId !== 'btn-equals') {
           // Every time user presses operator except =
           // update currentOperation object:
-          let operand1 = document.querySelector('#display-area').textContent;
-          currentOperation['operand1'] = parseFloat(operand1);
+          let operand1 = getDisplayValue(toNumber=true);
+          currentOperation['operand1'] = operand1;
           currentOperation['operator'] = btnId.split('-')[1];
           newDisplay = 0;
         } else {
           // User presses = button
-          let operand2 = document.querySelector('#display-area').textContent;
-          currentOperation['operand2'] = parseFloat(operand2);
+          let operand2 = getDisplayValue(toNumber=true);
+          currentOperation['operand2'] = operand2;
           currentOperation.evaluate();
           newDisplay = currentOperation['result'];
         }
@@ -69,7 +69,7 @@ function setButtons(inputButtons) {
 }
 
 function appendDigit(btnValue) {
-  let currentDisplayedResult = document.querySelector('#display-area').textContent;
+  let currentDisplayedResult = getDisplayValue();
   if (currentDisplayedResult.replace('.', '').length >= MAX_DIGITS) {
     // MAX_DIGITS has been reached, do not append additional digits
     return;
@@ -102,7 +102,7 @@ function updateDisplayedResult(resultToDisplay) {
 }
 
 function editDisplayedResult(btnId) {
-  let currentDisplayedResult = document.querySelector('#display-area').textContent;
+  let currentDisplayedResult = getDisplayValue();
   let nDigits = currentDisplayedResult.length;
   if (btnId === 'btn-back') {   // backspace
     if (nDigits == 1) {
@@ -123,4 +123,9 @@ function editDisplayedResult(btnId) {
 
 function evaluateOperation(currentOps) {
   
+}
+
+function getDisplayValue(toNumber = false) {
+  let displayValue = document.querySelector('#display-area').textContent;
+  return toNumber ? parseFloat(displayValue): displayValue;
 }
